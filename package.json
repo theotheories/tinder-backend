@@ -1,0 +1,19 @@
+{
+  "name": "tinder-backend",
+  "version": "1.0.0",
+  "description": "backend for tinder MERN stack project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theotheories/tinder-backend.git"
+  },
+  "author": "Theo McCausland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theotheories/tinder-backend/issues"
+  },
+  "homepage": "https://github.com/theotheories/tinder-backend#readme"
+}
