@@ -5,8 +5,10 @@ import Cards from "./dbCards.js";
 
 // App config
 const app = express();
-const port = process.env.PORT || 8001;
-const connection_url = "mongodb+srv://admin:yaXLjR9BGVxWYhoz@cluster0.h7tki.mongodb.net/tinderDB?retryWrites=true&w=majority"
+const { PORT, USERNAME_AND_PASSWORD, DB_NAME }  = process.env;
+
+
+const connection_url = `mongodb+srv://${USERNAME_AND_PASSWORD}@${DB_NAME}?retryWrites=true&w=majority`
 
 // middlewares
 app.use(express.json());
@@ -21,7 +23,7 @@ mongoose.connect(connection_url, {
 
 // api endpoints - get, post, update....
 app.get("/", (request, response) => response.status(200).send("hello"));
-app.post("/cards", (request, response) => {
+app.post("/tinder/cards", (request, response) => {
     const dbCard = request.body;
     Cards.create(dbCard, (error, data) => {
         if (error) {
@@ -30,7 +32,7 @@ app.post("/cards", (request, response) => {
         response.status(201).send(data);
     })
 });
-app.get("/cards", (request, response) => {
+app.get("/tinder/cards", (request, response) => {
     Cards.find((error, data) => {
         if (error) {
             response.status(500).send(error);
@@ -41,4 +43,4 @@ app.get("/cards", (request, response) => {
 
 
 // listener
-app.listen(port, () => console.log(`listening on localhost: ${port}`));
+app.listen(PORT, () => console.log(`listening on localhost: ${PORT}`));
